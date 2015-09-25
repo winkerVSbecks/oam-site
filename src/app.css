@@ -2,7 +2,7 @@
 /* Put custom app styles here.
  * Basscss is loaded through the postcss-basscss plugin
  */
-@import "basscss";
+@import 'basscss';
 
 /*
  * Adjust custom media query values here

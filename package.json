@@ -1,5 +1,5 @@
 {
-  "name": "OAM Site",
+  "name": "oam-site",
   "version": "1.0.0",
   "scripts": {
     "lint": "eslint src",
@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gaearon/react-hot-boilerplate.git"
+    "url": "https://github.com/winkerVSbecks/oam-site.git"
   },
   "license": "MIT",
   "devDependencies": {
@@ -20,9 +20,9 @@
     "eslint-plugin-react": "^2.3.0",
     "node-libs-browser": "^0.5.2",
     "postcss-loader": "^0.5.1",
+    "ramda": "^0.17.1",
     "react-hot-loader": "^1.2.7",
     "react-redux": "^2.1.1",
-    "rebass": "^0.1.4",
     "redux": "^2.0.0",
     "redux-devtools": "^2.1.0",
     "redux-thunk": "^0.1.0",

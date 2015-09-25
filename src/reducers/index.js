@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import counter from './counter';
+import canvas from './canvas-reducer';
 
 const rootReducer = combineReducers({
-  counter
+  canvas
 });
 
 export default rootReducer;
