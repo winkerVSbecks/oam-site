@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import TriangleBG from '../components/triangle-bg';
-import * as R from 'ramda';
+import Circle from '../components/circle';
+import Square from '../components/square';
+import Triangle from '../components/triangle';
 
 /**
  * SVG Canvas
  * This component generates the base SVG
  * and sets up all the sub-components
  */
-class Canvas extends Component {
+export default class Canvas extends Component {
 
   handleResize = () => {
-    this.props.onResize({
+    this.props.windowResize({
       width: window.innerWidth,
       height: window.innerHeight
     });
@@ -27,12 +29,8 @@ class Canvas extends Component {
 
   render() {
 
-    const { width, height, bgFill } = this.props;
-
-    const w = width >= height ? 100 : width * 100 / height;
-    const h = height > width ? 100 : height * 100 / width;
-
-    const viewBox = [0, 0, w, h].join(' ');
+    const { width, height, bgFill } = this.props.canvas;
+    const viewBox = [0, 0, width, height].join(' ');
 
     return (
       <svg version="1.1"
@@ -42,14 +40,15 @@ class Canvas extends Component {
         viewBox={ viewBox }>
 
         <TriangleBG fill={ bgFill }
-          w={ w }
-          h={ h } />
+          w={ width }
+          h={ height } />
 
+        <Square { ...this.props.square } />
+        <Triangle { ...this.props.triangle } />
+        <Circle { ...this.props.circle } />
       </svg>
     );
 
   }
 
 }
-
-export default Canvas;

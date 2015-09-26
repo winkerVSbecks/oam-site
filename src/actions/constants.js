@@ -1,1 +1,4 @@
 export const WINDOW_RESIZE = 'WINDOW_RESIZE';
+export const TOGGLE_TRIANGLE = 'TOGGLE_TRIANGLE';
+export const TOGGLE_SQUARE = 'TOGGLE_SQUARE';
+export const TOGGLE_CIRCLE = 'TOGGLE_CIRCLE';

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 /**
  * The Triangle in the background
  */
-class TriangleBG extends Component {
+export default class TriangleBG extends Component {
 
   render() {
 
@@ -24,5 +24,3 @@ class TriangleBG extends Component {
   }
 
 }
-
-export default TriangleBG;
