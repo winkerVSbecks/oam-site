@@ -1,18 +1,33 @@
 import React, { Component, PropTypes } from 'react';
-import Counter from '../components/Counter';
 import css from '../app.css';
-import { Container, PageHeader } from 'rebass';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as Actions from '../actions';
+import Canvas from '../components/canvas';
 
 class App extends Component {
+
   render() {
+
+    const { windowResize } = this.props;
+
     return (
-      <Container>
-        <PageHeader
-          title="OAM Site" />
-        <Counter />
-      </Container>
+      <Canvas { ...this.props.canvas } onResize={ windowResize } />
     );
+
   }
+
 };
 
-export default App;
+
+function mapStateToProps(state) {
+  return {
+    canvas: state.canvas
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(Actions, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

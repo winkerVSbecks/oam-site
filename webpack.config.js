@@ -1,8 +1,7 @@
-
-var path = require('path')
-var webpack = require('webpack')
-var basscss = require('postcss-basscss')
-var cssnext = require('cssnext')
+var path = require('path');
+var webpack = require('webpack');
+var basscss = require('postcss-basscss');
+var cssnext = require('cssnext');
 
 module.exports = {
 
@@ -58,5 +57,5 @@ module.exports = {
     ]
   }
 
-}
+};
 
