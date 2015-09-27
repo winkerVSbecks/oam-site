@@ -4,15 +4,27 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as Actions from '../actions';
 import Canvas from '../components/canvas';
+import Toolbar from '../components/toolbar';
 
 class App extends Component {
 
   render() {
 
-    const { windowResize } = this.props;
+    const toolbarProps = {
+      s: 40,
+      triangle: this.props.triangle.visible,
+      square: this.props.square.visible,
+      circle: this.props.circle.visible,
+      toggleTriangle: this.props.toggleTriangle,
+      toggleSquare: this.props.toggleSquare,
+      toggleCircle: this.props.toggleCircle
+    };
 
     return (
-      <Canvas { ...this.props.canvas } onResize={ windowResize } />
+      <div>
+        <Canvas { ...this.props } />
+        <Toolbar { ...toolbarProps } />
+      </div>
     );
 
   }
@@ -20,14 +32,8 @@ class App extends Component {
 };
 
 
-function mapStateToProps(state) {
-  return {
-    canvas: state.canvas
-  };
-}
-
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect((state) => state, mapDispatchToProps)(App);
