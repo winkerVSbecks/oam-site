@@ -10,7 +10,8 @@ import * as R from 'ramda';
 const initialState = {
   width: 100,
   height: 100,
-  bgFill: '#FD28FC'
+  bgFill: '#FD28FC',
+  windowWidth: 100
 };
 
 /**
@@ -25,7 +26,8 @@ export default function canvas(state = initialState, action) {
     case WINDOW_RESIZE:
       return R.merge(state, {
         width: action.width,
-        height: action.height
+        height: action.height,
+        windowWidth: action.windowWidth
       });
 
     default:

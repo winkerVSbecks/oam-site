@@ -11,13 +11,13 @@ class App extends Component {
   render() {
 
     const toolbarProps = {
-      s: 40,
       triangle: this.props.triangle.visible,
       square: this.props.square.visible,
       circle: this.props.circle.visible,
       toggleTriangle: this.props.toggleTriangle,
       toggleSquare: this.props.toggleSquare,
-      toggleCircle: this.props.toggleCircle
+      toggleCircle: this.props.toggleCircle,
+      width: this.props.canvas.windowWidth
     };
 
     return (

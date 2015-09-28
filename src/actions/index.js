@@ -10,6 +10,7 @@ export function windowResize({ width, height }) {
     type: WINDOW_RESIZE,
     width: w,
     height: h,
+    windowWidth: width
   };
 
 }
