@@ -1,4 +1,5 @@
 import { WINDOW_RESIZE, TOGGLE_TRIANGLE } from '../actions/constants';
+import { BLEND_FILTER, BASE } from './constants';
 import * as R from 'ramda';
 
 const initialState = {
@@ -7,8 +8,9 @@ const initialState = {
     [0, 0],
     [0, 0]
   ],
-  fill: '#02a9ea',
-  visible: true
+  fill: '#00FFFF',
+  visible: true,
+  mixBlendMode: BLEND_FILTER
 };
 
 /**
@@ -41,18 +43,15 @@ export default function triangle(state = initialState, action) {
  */
 function getTriangleVertices({ width, height }) {
 
-  const r = (width >= height ? width : height) / 8;
+  const r = (width >= height ? width : height) * BASE;
+  const w = width / 2;
+  const h = height / 2;
 
-  const vertices = R.map((_theta) => {
-
-    const theta = degToRad(_theta);
-
-    return [
-      width / 2 + r * Math.cos(theta),
-      height / 2 + r * Math.sin(theta)
-    ];
-
-  }, [30, 150, 270]);
+  const vertices = [
+    [w - r, h + r],
+    [w + r, h + r],
+    [w, h - 0.8 * r]
+  ];
 
   return { vertices };
 

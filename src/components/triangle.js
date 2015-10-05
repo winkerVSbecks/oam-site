@@ -8,7 +8,7 @@ export default class Triangle extends Component {
 
   render() {
 
-    const { fill, vertices, visible } = this.props;
+    const { fill, vertices, visible, mixBlendMode } = this.props;
     const d = [
       'M', ...vertices[0],
       'L', ...vertices[0],
@@ -18,9 +18,11 @@ export default class Triangle extends Component {
     ].join(' ');
 
     const classes = classNames({ 'display-none': !visible });
+    const styles = { mixBlendMode: mixBlendMode };
 
     return (
-      <path className={ classes }
+      <path style={ styles }
+        className={ classes }
         fill={ fill }
         opacity={ 0.5 }
         d={ d } />

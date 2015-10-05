@@ -1,12 +1,14 @@
 import { WINDOW_RESIZE, TOGGLE_SQUARE } from '../actions/constants';
+import { BLEND_FILTER, BASE } from './constants';
 import * as R from 'ramda';
 
 const initialState = {
   x: 0,
   y: 0,
   s: 0,
-  fill: '#7c77b9',
-  visible: true
+  fill: '#0000FF',
+  visible: true,
+  mixBlendMode: BLEND_FILTER
 };
 
 /**
@@ -39,7 +41,7 @@ export default function square(state = initialState, action) {
  */
 function getSquareDef({ width, height }) {
 
-  const s = (width >= height ? width : height) / 4;
+  const s = (width >= height ? width : height) * BASE * 2;
   const x = (width - s) / 2;
   const y = (height - s) / 2;
 
