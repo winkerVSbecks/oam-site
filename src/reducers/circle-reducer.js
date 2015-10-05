@@ -1,12 +1,14 @@
 import { WINDOW_RESIZE, TOGGLE_CIRCLE } from '../actions/constants';
+import { BLEND_FILTER, BASE } from './constants';
 import * as R from 'ramda';
 
 const initialState = {
   x: 0,
   y: 0,
   r: 0,
-  fill: '#faff00',
-  visible: true
+  fill: '#FFFF00',
+  visible: true,
+  mixBlendMode: BLEND_FILTER
 };
 
 /**
@@ -41,7 +43,7 @@ function getCircleDef({ width, height }) {
 
   const x = width / 2;
   const y = height / 2;
-  const r = (width >= height ? width : height) / 8;
+  const r = (width >= height ? width : height) * 0.9 * BASE;
 
   return { x, y, r };
 
