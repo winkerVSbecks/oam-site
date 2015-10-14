@@ -32,7 +32,7 @@ module.exports = function makeWebpackConfig(options) {
     entry: BUILD ? buildEntry : devEntry,
 
     output: {
-      path: path.join(__dirname, 'dist'),
+      path: path.join(__dirname, 'static'),
       filename: 'bundle.js',
       publicPath: '/static/'
     },
@@ -53,6 +53,10 @@ module.exports = function makeWebpackConfig(options) {
         {
           test: /\.css$/,
           loader: 'style-loader!css-loader!postcss-loader'
+        },
+        {
+          test: /\.(mp3|wav)/,
+          loader: 'file-loader'
         }
       ]
     },
