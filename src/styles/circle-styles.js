@@ -45,3 +45,16 @@ export const SWOOSH_REVERSE = Radium.keyframes({
     transform: 'scale(0)'
   }
 }, 'jellyReverse');
+
+export function getStyles(visible, mixBlendMode) {
+  const animation = visible ? JELLY : SWOOSH_REVERSE;
+  const easing = visible ? 'linear' : 'cubic-bezier(0, 0.79, 0, 1)';
+  const time = visible ? '1500ms' : '200ms';
+
+  return {
+   backfaceVisibility: 'hidden',
+   perspective: 1000,
+   mixBlendMode: mixBlendMode,
+   animation: `${animation} ${time} ${easing} both`,
+  };
+}

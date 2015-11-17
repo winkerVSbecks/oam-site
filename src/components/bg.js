@@ -3,17 +3,18 @@ import React, { Component } from 'react';
 /**
  * The Triangle in the background
  */
-export default class TriangleBG extends Component {
+export default class BG extends Component {
 
   render() {
 
     const { fill, w, h } = this.props;
 
     const d = [
-      'M', 0, 0,
+      'M', w / 2, 0,
       'H', w,
-      'L', 0, h,
-      'V', 0
+      'V', h,
+      'H', w / 2,
+      'Z'
     ].join(' ');
 
     return (

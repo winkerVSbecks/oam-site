@@ -3,11 +3,14 @@ import { BLEND_FILTER, BASE } from './constants';
 import * as R from 'ramda';
 
 const initialState = {
+  x: 0,
+  y: 0,
   vertices: [
     [0, 0],
     [0, 0],
     [0, 0]
   ],
+  r: 0,
   fill: '#00FFFF',
   visible: true,
   mixBlendMode: BLEND_FILTER
@@ -44,16 +47,16 @@ export default function triangle(state = initialState, action) {
 function getTriangleVertices({ width, height }) {
 
   const r = (width >= height ? width : height) * BASE;
-  const w = width / 2;
-  const h = height / 2;
+  const x = width / 2;
+  const y = height / 2;
 
   const vertices = [
-    [w - r, h + r],
-    [w + r, h + r],
-    [w, h - 0.8 * r]
+    [-r, r],
+    [r, r],
+    [0, -0.8 * r]
   ];
 
-  return { vertices };
+  return { vertices, x, y, r };
 
 }
 
