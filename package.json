@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "build": "webpack --config webpack.build.js --bail -p",
+    "deploy": "bash deploy.sh",
     "lint": "eslint src",
     "start": "node server.js"
   },
@@ -22,8 +23,6 @@
     "del": "^2.0.2",
     "eslint-plugin-react": "^2.3.0",
     "file-loader": "^0.8.4",
-    "gulp": "^3.9.0",
-    "gulp-gh-pages": "^0.5.3",
     "node-libs-browser": "^0.5.2",
     "postcss-loader": "^0.5.1",
     "radium": "^0.14.1",
