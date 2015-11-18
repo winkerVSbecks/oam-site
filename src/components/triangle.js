@@ -29,22 +29,24 @@ export default class Triangle extends Component {
     if (visible) {
       open.play();
     } else {
-      close.play();
+      const delay = R.test(/^google/, R.toLower(navigator.vendor)) ? 300 : 0;
+      setTimeout(() => close.play(), delay);
     }
 
     return (
       <g transform={ 'translate(' + x + ', ' + y + ') rotate(360)' }>
         <defs>
-          <clipPath id="cut-off-bottom">
-            <circle cx={ 3 * r } cy={ 3 * r }
-              r={ 1.5 * r }
-              style={ maskStyles } />
+          <clipPath id="circle-mask">
+            <circle r={ 1.5 * r }
+              cx={ 3 * r } cy={ 3 * r }
+              style={ maskStyles }>
+            </circle>
           </clipPath>
         </defs>
         <path style={ triangleStyles }
           fill={ fill }
           d={ d }
-          clipPath="url(#cut-off-bottom)" />
+          clipPath="url(#circle-mask)" />
       </g>
     );
 

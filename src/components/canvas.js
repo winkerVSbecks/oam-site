@@ -3,6 +3,7 @@ import BG from '../components/bg';
 import Circle from '../components/circle';
 import Square from '../components/square';
 import Triangle from '../components/triangle';
+import Radium from 'radium';
 
 /**
  * SVG Canvas
