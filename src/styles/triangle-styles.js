@@ -65,15 +65,15 @@ export function getTriangleStyles(visible, mixBlendMode) {
 
 export function getMaskStyles(visible, r) {
 
-  const d = -3 * r + 'px';
+  const dist = -3 * r + 'px';
 
   const APPEAR = Radium.keyframes({
     '0%': { transform: 'translate3d(0, 0, 0)' },
-    '100%': { transform: `translate3d(${d}, ${d}, 0)` }
+    '100%': { transform: `translate3d(${dist}, ${dist}, 0)` }
   });
 
   const DISAPPEAR = Radium.keyframes({
-    '0%': { transform: `translate3d(${d}, ${d}, 0)` },
+    '0%': { transform: `translate3d(${dist}, ${dist}, 0)` },
     '100%': { transform: 'translate3d(0, 0, 0)' }
   });
 
@@ -82,6 +82,7 @@ export function getMaskStyles(visible, r) {
   const time = visible ? 500 : 1000;
 
   return {
+    transform: 'translate3d(0, 0, 0)',
     animation: `${animation} ${time}ms ${easing} forwards`
   };
 
