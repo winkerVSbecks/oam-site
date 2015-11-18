@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TriangleBG from '../components/triangle-bg';
+import BG from '../components/bg';
 import Circle from '../components/circle';
 import Square from '../components/square';
 import Triangle from '../components/triangle';
@@ -39,7 +39,7 @@ export default class Canvas extends Component {
         height="100%"
         viewBox={ viewBox }>
 
-        <TriangleBG fill={ bgFill }
+        <BG fill={ bgFill }
           w={ width }
           h={ height } />
 

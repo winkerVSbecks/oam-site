@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import classNames from 'classNames';
 import * as R from 'ramda';
 import Radium from 'radium';
-import {JELLY, SWOOSH_REVERSE} from '../styles/circle-styles';
+import { getStyles } from '../styles/circle-styles';
 import trampolineBounce from '../assets/trampoline-bounce.mp3';
 import quickReverse from '../assets/quick-reverse.mp3';
 
@@ -29,16 +29,7 @@ export default class Circle extends Component {
       reverse.play();
     }
 
-    const animation = visible ? JELLY : SWOOSH_REVERSE;
-    const easing = visible ? 'linear' : 'cubic-bezier(0, 0.79, 0, 1)';
-    const time = visible ? '1500ms' : '200ms';
-
-    const styles = {
-      backfaceVisibility: 'hidden',
-      perspective: 1000,
-      mixBlendMode: mixBlendMode,
-      animation: `${animation} ${time} ${easing} both`,
-    };
+    const styles = getStyles(visible, mixBlendMode);
 
     return (
       <g transform={ 'translate(' + x + ', ' + y + ')' }>
