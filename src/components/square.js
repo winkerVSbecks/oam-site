@@ -22,9 +22,9 @@ export default class Square extends Component {
     const styles = getStyles(visible, mixBlendMode, s);
 
     if (visible) {
-      bounce.play();
-    } else {
       confuse.play();
+    } else {
+      bounce.play();
     }
 
     return (
