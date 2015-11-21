@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import * as R from 'ramda';
 import { getStyles } from '../styles/square-styles';
 import confused from '../assets/confused.mp3';
-import bounceDownSynth from '../assets/bounce-down-synth.mp3';
+import bounceDownSynth from '../assets/confused-reverse.mp3'; // '../assets/bounce-down-synth.mp3';
 
-const bounce = new Audio(bounceDownSynth);
 const confuse = new Audio(confused);
+const bounce = new Audio(bounceDownSynth);
+bounce.playbackRate = 1.5;
+
 
 /**
  * The Square

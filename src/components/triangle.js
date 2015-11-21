@@ -4,10 +4,11 @@ import { DASH, MASK, getTriangleStyles, getSideStyles,
   getMaskStyles } from '../styles/triangle-styles';
 import * as R from 'ramda';
 import klang from '../assets/klang.mp3';
-import closeTheLid from '../assets/close-the-lid.mp3';
+import closeTheLid from '../assets/klang-reverse.mp3'; //'../assets/close-the-lid.mp3';
 
 const open = new Audio(klang);
 const close = new Audio(closeTheLid);
+close.playbackRate = 1.5;
 
 /**
  * The Triangle

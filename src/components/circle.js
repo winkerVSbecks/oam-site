@@ -4,10 +4,11 @@ import * as R from 'ramda';
 import Radium from 'radium';
 import { getStyles } from '../styles/circle-styles';
 import trampolineBounce from '../assets/trampoline-bounce.mp3';
-import quickReverse from '../assets/quick-reverse.mp3';
+import quickReverse from '../assets/trampoline-bounce-reverse.mp3'; //'../assets/quick-reverse.mp3';
 
 const bounce = new Audio(trampolineBounce);
 const reverse = new Audio(quickReverse);
+reverse.playbackRate = 3;
 
 /**
  * The Circle
