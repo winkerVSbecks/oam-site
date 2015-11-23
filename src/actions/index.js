@@ -1,5 +1,5 @@
-import { WINDOW_RESIZE, TOGGLE_TRIANGLE, TOGGLE_SQUARE, TOGGLE_CIRCLE }
-  from '../actions/constants';
+import { WINDOW_RESIZE, TOGGLE_TRIANGLE, TOGGLE_SQUARE, TOGGLE_CIRCLE,
+  TOGGLE_LOADER } from '../actions/constants';
 
 export function windowResize({ width, height }) {
 
@@ -10,7 +10,8 @@ export function windowResize({ width, height }) {
     type: WINDOW_RESIZE,
     width: w,
     height: h,
-    windowWidth: width
+    windowWidth: width,
+    windowHeight: height
   };
 
 }
@@ -24,3 +25,4 @@ function toggleShape(type) {
 export let toggleTriangle = () => toggleShape(TOGGLE_TRIANGLE);
 export let toggleSquare = () => toggleShape(TOGGLE_SQUARE);
 export let toggleCircle = () => toggleShape(TOGGLE_CIRCLE);
+export let toggleLoader = () => toggleShape(TOGGLE_LOADER);

@@ -5,8 +5,26 @@ import { connect } from 'react-redux';
 import * as Actions from '../actions';
 import Canvas from '../components/canvas';
 import Toolbar from '../components/toolbar';
+import Loader from '../components/loader';
+import * as R from 'ramda';
 
 class App extends Component {
+
+  handleResize = () => {
+    this.props.windowResize({
+      width: window.innerWidth,
+      height: window.innerHeight
+    });
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.handleResize);
+    this.handleResize();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+  }
 
   render() {
 
@@ -20,12 +38,18 @@ class App extends Component {
       width: this.props.canvas.windowWidth
     };
 
-    return (
-      <div>
+    const loaderProps = R.merge(R.clone(this.props.loader), {
+      toggleLoader: this.props.toggleLoader,
+    });
+
+    const content = !this.props.loader.didFinish ?
+      <Loader { ...loaderProps } /> :
+      (<div>
         <Canvas { ...this.props } />
         <Toolbar { ...toolbarProps } />
-      </div>
-    );
+      </div>);
+
+    return content;
 
   }
 
