@@ -12,22 +12,6 @@ import Radium from 'radium';
  */
 export default class Canvas extends Component {
 
-  handleResize = () => {
-    this.props.windowResize({
-      width: window.innerWidth,
-      height: window.innerHeight
-    });
-  }
-
-  componentDidMount() {
-    window.addEventListener('resize', this.handleResize);
-    this.handleResize();
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.handleResize);
-  }
-
   render() {
 
     const { width, height, bgFill } = this.props.canvas;

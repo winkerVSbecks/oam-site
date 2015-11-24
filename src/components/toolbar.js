@@ -8,7 +8,7 @@ export default class Toolbar extends Component {
 
   render() {
 
-    const { triangle, square, circle, width } = this.props;
+    const { triangle, square, circle, width, visible } = this.props;
     const s = getSize(width);
     const { toggleTriangle, toggleSquare, toggleCircle } = this.props;
     const styles = {
