@@ -38,7 +38,7 @@ export function getStyles(visible, mixBlendMode, s) {
   const origin = '50% 50%';
 
   return {
-    'transform-origin': origin,
+    transformOrigin: origin,
     animation: `${animation} ${time}ms ${easing} forwards`,
     mixBlendMode: mixBlendMode,
     opacity: 0.5

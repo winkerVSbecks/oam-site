@@ -73,7 +73,7 @@ function buildWave(w, h, p) {
   const y = h / 2;
   const x = (w - w * 0.25 - 11 * a) / 2;
 
-  let pathData = [
+  const start = [
     'M', x, y + a / 2,
     'L', x + w * 0.25, y + a / 2,
     'c', a * CP_MULTIPLIER, 0,
@@ -81,16 +81,18 @@ function buildWave(w, h, p) {
     a, -a
   ];
 
-  R.forEach((idx) => {
+  const wave = R.flatten(R.map((idx) => {
 
     const y = idx % 2 === 0 ? a : -a;
 
-    pathData.push(...[
+    return [...[
       's', -(1 - a) * CP_MULTIPLIER, y,
       a, y
-    ]);
+    ]];
 
-  }, R.range(0, 10));
+  }, R.range(0, 10)));
+
+  const pathData = [...start, ...wave];
 
   return pathData.join(' ');
 
