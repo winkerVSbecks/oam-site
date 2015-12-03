@@ -25,18 +25,19 @@
     "file-loader": "^0.8.4",
     "node-libs-browser": "^0.5.2",
     "postcss-loader": "^0.5.1",
-    "radium": "^0.14.1",
+    "radium": "^0.15.3",
     "ramda": "^0.17.1",
     "react-hot-loader": "^1.2.7",
-    "react-redux": "^2.1.1",
-    "redux": "^2.0.0",
-    "redux-devtools": "^2.1.0",
-    "redux-thunk": "^0.1.0",
+    "react-redux": "^4.0.0",
+    "redux": "^3.0.4",
+    "redux-devtools": "^2.1.5",
+    "redux-thunk": "^1.0.0",
     "style-loader": "^0.12.3",
     "webpack": "^1.9.6",
     "webpack-dev-server": "^1.8.2"
   },
   "dependencies": {
-    "react": "^0.13.0"
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0"
   }
 }

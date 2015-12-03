@@ -1,4 +1,5 @@
 import Radium from 'radium';
+import * as R from 'ramda';
 
 export const JELLY = Radium.keyframes({
   '0%': {
@@ -46,7 +47,7 @@ export const SWOOSH_REVERSE = Radium.keyframes({
   }
 }, 'jellyReverse');
 
-export function getStyles(visible, mixBlendMode) {
+const getStyles = R.memoize((visible, mixBlendMode) => {
   const animation = visible ? JELLY : SWOOSH_REVERSE;
   const easing = visible ? 'linear' : 'cubic-bezier(0, 0.79, 0, 1)';
   const time = visible ? '1500ms' : '200ms';
@@ -57,4 +58,7 @@ export function getStyles(visible, mixBlendMode) {
    mixBlendMode: mixBlendMode,
    animation: `${animation} ${time} ${easing} both`,
   };
-}
+});
+
+
+export default getStyles;

@@ -1,4 +1,5 @@
-import React, { Component, classSet, ReactDOM } from 'react';
+import React, { Component, classSet } from 'react';
+import ReactDOM from 'react-dom';
 import { getStyles } from '../styles/loader-styles';
 import Radium from 'radium';
 import * as R from 'ramda';
@@ -15,7 +16,7 @@ export default class Loader extends Component {
 
   // AnimationEnd
   componentDidMount() {
-    const svg = React.findDOMNode(this);
+    const svg = ReactDOM.findDOMNode(this);
     const path = svg.querySelector('path');
 
     const end = () => this.props.toggleLoader();

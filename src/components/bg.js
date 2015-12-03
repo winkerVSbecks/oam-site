@@ -1,27 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 /**
  * The Triangle in the background
  */
-export default class BG extends Component {
+const BG = ({ fill, w, h }) => {
 
-  render() {
+  const d = [
+    'M', w / 2, 0,
+    'H', w,
+    'V', h,
+    'H', w / 2,
+    'Z'
+  ].join(' ');
 
-    const { fill, w, h } = this.props;
+  return (
+    <path fill={ fill }
+      d={ d } />
+  );
 
-    const d = [
-      'M', w / 2, 0,
-      'H', w,
-      'V', h,
-      'H', w / 2,
-      'Z'
-    ].join(' ');
+};
 
-    return (
-      <path fill={ fill }
-        d={ d } />
-    );
 
-  }
-
-}
+export default BG;

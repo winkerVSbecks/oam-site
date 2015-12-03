@@ -10,30 +10,28 @@ import Radium from 'radium';
  * This component generates the base SVG
  * and sets up all the sub-components
  */
-export default class Canvas extends Component {
+const Canvas = ({ core, square, triangle, circle }) => {
 
-  render() {
+  const { width, height, bgFill } = core;
+  const viewBox = [0, 0, width, height].join(' ');
 
-    const { width, height, bgFill } = this.props.canvas;
-    const viewBox = [0, 0, width, height].join(' ');
+  return (
+    <svg version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      height="100%"
+      viewBox={ viewBox }>
 
-    return (
-      <svg version="1.1"
-        xmlns="http://www.w3.org/2000/svg"
-        width="100%"
-        height="100%"
-        viewBox={ viewBox }>
+      <BG fill={ bgFill }
+        w={ width }
+        h={ height } />
 
-        <BG fill={ bgFill }
-          w={ width }
-          h={ height } />
+      <Square { ...square } />
+      <Triangle { ...triangle } />
+      <Circle { ...circle } />
+    </svg>
+  );
 
-        <Square { ...this.props.square } />
-        <Triangle { ...this.props.triangle } />
-        <Circle { ...this.props.circle } />
-      </svg>
-    );
+};
 
-  }
-
-}
+export default Canvas;

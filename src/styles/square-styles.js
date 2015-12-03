@@ -1,4 +1,5 @@
 import Radium from 'radium';
+import * as R from 'ramda';
 
 function expand(s) {
 
@@ -28,7 +29,7 @@ const COLLAPSE = Radium.keyframes({
 
 });
 
-export function getStyles(visible, mixBlendMode, s) {
+const getStyles = R.memoize((visible, mixBlendMode, s) => {
 
   const EXPAND = expand(s);
   const animation = visible ? EXPAND : COLLAPSE;
@@ -44,4 +45,6 @@ export function getStyles(visible, mixBlendMode, s) {
     opacity: 0.5
   };
 
-}
+});
+
+export default getStyles;
