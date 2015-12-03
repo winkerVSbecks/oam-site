@@ -2,7 +2,7 @@ import { WINDOW_RESIZE, TOGGLE_LOADER } from '../actions/constants';
 import * as R from 'ramda';
 
 const initialState = {
-  fill: '#FD28FC', //F85A3E
+  fill: '#FD28FC', // #F85A3E
   stroke: '#2cfffe', // '#EEF4D4',
   didFinish: false,
   w: 0,

@@ -5,7 +5,9 @@
     "build": "webpack --config webpack.build.js --bail -p && cp index.html build",
     "deploy": "bash deploy.sh",
     "lint": "eslint src",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "webpack --config webpack.test.js && node_modules/.bin/browserify build/bundle.js | tape-run | node_modules/.bin/faucet",
+    "test-watch": "node_modules/.bin/onchange 'src/**/*.test.js' -- npm test"
   },
   "repository": {
     "type": "git",
@@ -22,8 +24,10 @@
     "cssnext": "^1.8.0",
     "del": "^2.0.2",
     "eslint-plugin-react": "^2.3.0",
+    "faucet": "0.0.1",
     "file-loader": "^0.8.4",
     "node-libs-browser": "^0.5.2",
+    "onchange": "^2.0.0",
     "postcss-loader": "^0.5.1",
     "radium": "^0.15.3",
     "ramda": "^0.17.1",
@@ -33,10 +37,14 @@
     "redux-devtools": "^2.1.5",
     "redux-thunk": "^1.0.0",
     "style-loader": "^0.12.3",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.2.2",
+    "tape-run": "^2.1.0",
     "webpack": "^1.9.6",
     "webpack-dev-server": "^1.8.2"
   },
   "dependencies": {
+    "browserify": "^12.0.1",
     "react": "^0.14.0",
     "react-dom": "^0.14.0"
   }
