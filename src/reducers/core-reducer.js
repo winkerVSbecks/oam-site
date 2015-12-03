@@ -9,11 +9,11 @@ const initialState = {
 };
 
 /**
- * Canvas action handlers
+ * Core action handlers
  * @param  {Object} state
  * @param  {Object} action
  */
-export default function canvas(state = initialState, action) {
+export default function core(state = initialState, action) {
 
   switch (action.type) {
 
