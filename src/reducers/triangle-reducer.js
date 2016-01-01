@@ -1,6 +1,13 @@
 import { WINDOW_RESIZE, TOGGLE_TRIANGLE } from '../actions/constants';
 import { BLEND_FILTER, BASE } from './constants';
 import * as R from 'ramda';
+import klang from '../assets/klang.mp3';
+import closeTheLid from '../assets/klang-reverse.mp3';
+
+const open = new Audio(klang);
+const close = new Audio(closeTheLid);
+close.playbackRate = 1.5;
+const delay = R.test(/^google/, R.toLower(navigator.vendor)) ? 300 : 0;
 
 const initialState = {
   x: 0,
@@ -29,9 +36,15 @@ export default function triangle(state = initialState, action) {
       return R.merge(state, getTriangleVertices(action));
 
     case TOGGLE_TRIANGLE:
-      return R.merge(state, {
-        visible: !state.visible
-      });
+      const visible = !state.visible;
+
+      if (visible) {
+        open.play();
+      } else {
+        setTimeout(() => close.play(), delay);
+      }
+
+      return R.merge(state, { visible });
 
     default:
       return state;

@@ -2,6 +2,13 @@ import { WINDOW_RESIZE, TOGGLE_CIRCLE } from '../actions/constants';
 import { BLEND_FILTER, BASE } from './constants';
 import * as R from 'ramda';
 
+import trampolineBounce from '../assets/trampoline-bounce.mp3';
+import quickReverse from '../assets/trampoline-bounce-reverse.mp3';
+
+const bounce = new Audio(trampolineBounce);
+const reverse = new Audio(quickReverse);
+reverse.playbackRate = 3;
+
 const initialState = {
   x: 0,
   y: 0,
@@ -24,9 +31,15 @@ export default function circle(state = initialState, action) {
       return R.merge(state, getCircleDef(action));
 
     case TOGGLE_CIRCLE:
-      return R.merge(state, {
-        visible: !state.visible
-      });
+      const visible = !state.visible;
+
+      if (visible) {
+        bounce.play();
+      } else {
+        reverse.play();
+      }
+
+      return R.merge(state, { visible });
 
     default:
       return state;

@@ -1,6 +1,12 @@
 import { WINDOW_RESIZE, TOGGLE_SQUARE } from '../actions/constants';
 import { BLEND_FILTER, BASE } from './constants';
 import * as R from 'ramda';
+import confused from '../assets/confused.mp3';
+import bounceDownSynth from '../assets/confused-reverse.mp3';
+
+const confuse = new Audio(confused);
+const bounce = new Audio(bounceDownSynth);
+bounce.playbackRate = 1.5;
 
 const initialState = {
   x: 0,
@@ -24,9 +30,15 @@ export default function square(state = initialState, action) {
       return R.merge(state, getSquareDef(action));
 
     case TOGGLE_SQUARE:
-      return R.merge(state, {
-        visible: !state.visible
-      });
+      const visible = !state.visible;
+
+      if (visible) {
+        confuse.play();
+      } else {
+        bounce.play();
+      }
+
+      return R.merge(state, { visible });
 
     default:
       return state;
