@@ -35,11 +35,15 @@ class App extends Component {
       toggleTriangle: this.props.toggleTriangle,
       toggleSquare: this.props.toggleSquare,
       toggleCircle: this.props.toggleCircle,
+      clear: this.props.clear,
       width: this.props.core.windowWidth
     };
 
     const loaderProps = R.merge(R.clone(this.props.loader), {
       toggleLoader: this.props.toggleLoader,
+      toggleTriangle: this.props.toggleTriangle,
+      toggleSquare: this.props.toggleSquare,
+      toggleCircle: this.props.toggleCircle
     });
 
     const content = !this.props.loader.didFinish ?

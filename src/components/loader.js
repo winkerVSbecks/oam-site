@@ -19,7 +19,12 @@ export default class Loader extends Component {
     const svg = ReactDOM.findDOMNode(this);
     const path = svg.querySelector('path');
 
-    const end = () => this.props.toggleLoader();
+    const end = () => {
+      this.props.toggleLoader();
+      this.props.toggleTriangle();
+      this.props.toggleSquare();
+      this.props.toggleCircle();
+    }
     loadTone.play();
 
     if (path) {
