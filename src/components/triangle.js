@@ -1,14 +1,7 @@
 import React, { Component, classSet } from 'react';
 import Radium from 'radium';
-import { DASH, MASK, getTriangleStyles, getSideStyles,
-  getMaskStyles } from '../styles/triangle-styles';
+import { getTriangleStyles, getMaskStyles } from '../styles/triangle-styles';
 import * as R from 'ramda';
-import klang from '../assets/klang.mp3';
-import closeTheLid from '../assets/klang-reverse.mp3'; //'../assets/close-the-lid.mp3';
-
-const open = new Audio(klang);
-const close = new Audio(closeTheLid);
-close.playbackRate = 1.5;
 
 /**
  * The Triangle
@@ -21,18 +14,10 @@ export default class Triangle extends Component {
   }
 
   render() {
-
     const { fill, vertices, visible, mixBlendMode, x, y, r } = this.props;
     const d = buildD(vertices);
     const triangleStyles = getTriangleStyles(visible, mixBlendMode);
     const maskStyles = getMaskStyles(visible, r);
-
-    if (visible) {
-      open.play();
-    } else {
-      const delay = R.test(/^google/, R.toLower(navigator.vendor)) ? 300 : 0;
-      setTimeout(() => close.play(), delay);
-    }
 
     return (
       <g transform={ 'translate(' + x + ', ' + y + ') rotate(360)' }>
@@ -50,10 +35,9 @@ export default class Triangle extends Component {
           clipPath="url(#circle-mask)" />
       </g>
     );
-
   }
 
-}
+};
 
 /**
  * Utilities

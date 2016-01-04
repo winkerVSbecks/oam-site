@@ -1,57 +1,5 @@
 import Radium from 'radium';
 
-export const DASH = Radium.keyframes({
-
-  '25%': {
-    'stroke-dashoffset': 75
-  },
-
-  '50%': {
-    'stroke-dashoffset': 0
-  },
-
-  '85%': {
-    transform: 'scale(1)',
-    'stroke-dashoffset': 0,
-    stroke: '#2AFC98',
-    opacity: 1
-  },
-
-  '100%': {
-    'stroke-dashoffset': 0,
-    transform: 'scale(1.5)',
-    stroke: '#fff',
-    opacity: 0
-  }
-
-});
-
-export const MASK = Radium.keyframes({
-
-  '25%': {
-    'stroke-dashoffset': 75
-  },
-
-  '50%': {
-    'stroke-dashoffset': 0
-  },
-
-  '85%': {
-    transform: 'scale(1)',
-    'stroke-dashoffset': 0,
-    stroke: '#2AFC98',
-    opacity: 1
-  },
-
-  '100%': {
-    'stroke-dashoffset': 0,
-    transform: 'scale(1.5)',
-    stroke: '#fff',
-    opacity: 0
-  }
-
-});
-
 export function getTriangleStyles(visible, mixBlendMode) {
 
   return {
