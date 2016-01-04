@@ -17,7 +17,7 @@ function getFill(isVisible) {
 function getSize(width) {
 
   if (width < 400) {
-    return 24;
+    return 20;
   } else if (width >= 400 & width < 550) {
     return 16;
   } else if (width >= 550 & width < 750) {
@@ -53,15 +53,20 @@ const triangleStyles = (s, triangle) => R.merge(base(s), {
 });
 
 const squareStyles = (s, square) => R.merge(base(s), {
-  backgroundColor: getFill(square)
+  backgroundColor: getFill(square),
+  marginRight: '0.75rem'
 });
+
+const clearButtonStyles = (s, square) => R.merge(base(s), {});
 
 const containerStyles = (s, width) => ({
   margin: width < 550 ? '0 auto' : 0
 });
 
 const toolbarStyles = (s, width) => ({
-  backgroundColor: width < 550 ? 'rgba(0,0,0,0.05)' : 'transparent'
+  backgroundColor: width < 550 ? 'rgba(0,0,0,0.05)' : 'transparent',
+  paddingLeft: width < 550 ? '1rem' : '2rem',
+  paddingRight: width < 550 ? '1rem' : '2rem'
 });
 
 export function getStyles({width, circle, triangle, square}) {
@@ -72,6 +77,7 @@ export function getStyles({width, circle, triangle, square}) {
     triangleStyles: triangleStyles(s, triangle),
     squareStyles: squareStyles(s, square),
     containerStyles: containerStyles(s, width),
-    toolbarStyles: toolbarStyles(s, width)
+    toolbarStyles: toolbarStyles(s, width),
+    clearButtonStyles: clearButtonStyles(s, width)
   };
 }

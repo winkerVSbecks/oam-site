@@ -1,4 +1,4 @@
-import { WINDOW_RESIZE, TOGGLE_TRIANGLE } from '../actions/constants';
+import { WINDOW_RESIZE, TOGGLE_TRIANGLE, CLEAR } from '../actions/constants';
 import { BLEND_FILTER, BASE } from './constants';
 import * as R from 'ramda';
 import klang from '../assets/klang.mp3';
@@ -6,8 +6,10 @@ import closeTheLid from '../assets/klang-reverse.mp3';
 
 const open = new Audio(klang);
 const close = new Audio(closeTheLid);
-close.playbackRate = 1.5;
 const delay = R.test(/^google/, R.toLower(navigator.vendor)) ? 300 : 0;
+
+const isSafari = R.test(/^apple/, R.toLower(navigator.vendor));
+if (!isSafari) { close.playbackRate = 1.5; }
 
 const initialState = {
   x: 0,
@@ -19,7 +21,7 @@ const initialState = {
   ],
   r: 0,
   fill: '#00FFFF',
-  visible: true,
+  visible: false,
   mixBlendMode: BLEND_FILTER
 };
 
@@ -34,6 +36,10 @@ export default function triangle(state = initialState, action) {
 
     case WINDOW_RESIZE:
       return R.merge(state, getTriangleVertices(action));
+
+    case CLEAR:
+      setTimeout(() => close.play(), delay);
+      return R.merge(state, { visible: false });
 
     case TOGGLE_TRIANGLE:
       const visible = !state.visible;
