@@ -1,5 +1,6 @@
-import { WINDOW_RESIZE, TOGGLE_TRIANGLE, CLEAR } from '../actions/constants';
-import { BLEND_FILTER, BASE } from './constants';
+import { WINDOW_RESIZE, TOGGLE_TRIANGLE, CLEAR, SET_PALETTE }
+  from '../actions/constants';
+import { PALETTE, BASE } from './constants';
 import * as R from 'ramda';
 import klang from '../assets/klang.mp3';
 import closeTheLid from '../assets/klang-reverse.mp3';
@@ -20,9 +21,8 @@ const initialState = {
     [0, 0]
   ],
   r: 0,
-  fill: '#00FFFF',
-  visible: false,
-  mixBlendMode: BLEND_FILTER
+  fill: PALETTE.JAZZY.triangle,
+  visible: false
 };
 
 /**
@@ -51,6 +51,11 @@ export default function triangle(state = initialState, action) {
       }
 
       return R.merge(state, { visible });
+
+    case SET_PALETTE:
+      return R.merge(state, {
+        fill: PALETTE[action.palette].triangle
+      });
 
     default:
       return state;

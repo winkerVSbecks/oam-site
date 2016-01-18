@@ -6,6 +6,7 @@ import * as Actions from '../actions';
 import Canvas from '../components/canvas';
 import Toolbar from '../components/toolbar';
 import Loader from '../components/loader';
+import ColourSelector from '../components/colour-selector';
 import * as R from 'ramda';
 
 class App extends Component {
@@ -36,7 +37,12 @@ class App extends Component {
       toggleSquare: this.props.toggleSquare,
       toggleCircle: this.props.toggleCircle,
       clear: this.props.clear,
-      width: this.props.core.windowWidth
+      width: this.props.core.windowWidth,
+      fills: {
+        triangle: this.props.triangle.fill,
+        square: this.props.square.fill,
+        circle: this.props.circle.fill
+      }
     };
 
     const loaderProps = R.merge(R.clone(this.props.loader), {
@@ -46,9 +52,16 @@ class App extends Component {
       toggleCircle: this.props.toggleCircle
     });
 
+    const colourSelectorProps = {
+      setPalette: this.props.setPalette,
+      width: this.props.core.windowWidth,
+      palette: this.props.core.palette
+    };
+
     const content = !this.props.loader.didFinish ?
       <Loader { ...loaderProps } /> :
       (<div>
+        <ColourSelector { ...colourSelectorProps } />
         <Canvas { ...this.props } />
         <Toolbar { ...toolbarProps } />
       </div>);

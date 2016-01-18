@@ -5,8 +5,8 @@ import * as R from 'ramda';
  * @param  {Boolean} isVisible
  * @return {String}  Fill colour
  */
-function getFill(isVisible) {
-  return isVisible ? '#2cfffe' : '#999999';
+function getFill(isVisible, fill) {
+  return isVisible ? fill : '#999999';
 }
 
 /**
@@ -39,21 +39,21 @@ const base = (s) => ({
   transition: 'all ease-in-out 300ms'
 });
 
-const circleStyles = (s, circle) => R.merge(base(s), {
-  backgroundColor: getFill(circle)
+const circleStyles = (s, circle, fill) => R.merge(base(s), {
+  backgroundColor: getFill(circle, fill)
 });
 
-const triangleStyles = (s, triangle) => R.merge(base(s), {
+const triangleStyles = (s, triangle, fill) => R.merge(base(s), {
   width: 0,
   height: 0,
   borderLeft: `${s * 0.6}vw solid transparent`,
   borderRight: `${s * 0.6}vw solid transparent`,
-  borderBottom: `${s}vw solid ${getFill(triangle)}`,
+  borderBottom: `${s}vw solid ${getFill(triangle, fill)}`,
   marginRight: '0.75rem'
 });
 
-const squareStyles = (s, square) => R.merge(base(s), {
-  backgroundColor: getFill(square),
+const squareStyles = (s, square, fill) => R.merge(base(s), {
+  backgroundColor: getFill(square, fill),
   marginRight: '0.75rem'
 });
 
@@ -69,13 +69,13 @@ const toolbarStyles = (s, width) => ({
   paddingRight: width < 550 ? '1rem' : '2rem'
 });
 
-export function getStyles({width, circle, triangle, square}) {
+export function getStyles({width, circle, triangle, square, fills}) {
   const s = getSize(width);
 
   return {
-    circleStyles: circleStyles(s, circle),
-    triangleStyles: triangleStyles(s, triangle),
-    squareStyles: squareStyles(s, square),
+    circleStyles: circleStyles(s, circle, fills.circle),
+    triangleStyles: triangleStyles(s, triangle, fills.triangle),
+    squareStyles: squareStyles(s, square, fills.square),
     containerStyles: containerStyles(s, width),
     toolbarStyles: toolbarStyles(s, width),
     clearButtonStyles: clearButtonStyles(s, width)

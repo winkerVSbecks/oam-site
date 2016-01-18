@@ -1,5 +1,6 @@
-import { WINDOW_RESIZE, TOGGLE_CIRCLE, CLEAR } from '../actions/constants';
-import { BLEND_FILTER, BASE } from './constants';
+import { WINDOW_RESIZE, TOGGLE_CIRCLE, CLEAR, SET_PALETTE }
+  from '../actions/constants';
+import { PALETTE, BASE } from './constants';
 import * as R from 'ramda';
 
 import trampolineBounce from '../assets/trampoline-bounce.mp3';
@@ -15,9 +16,8 @@ const initialState = {
   x: 0,
   y: 0,
   r: 0,
-  fill: '#FFFF00',
-  visible: false,
-  mixBlendMode: BLEND_FILTER
+  fill: PALETTE.JAZZY.circle,
+  visible: false
 };
 
 /**
@@ -46,6 +46,11 @@ export default function circle(state = initialState, action) {
       }
 
       return R.merge(state, { visible });
+
+    case SET_PALETTE:
+      return R.merge(state, {
+        fill: PALETTE[action.palette].circle
+      });
 
     default:
       return state;

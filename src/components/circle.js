@@ -5,9 +5,9 @@ import getStyles from '../styles/circle-styles';
 /**
  * The Circle
  */
-const Circle = ({ fill, x, y, r, visible, mixBlendMode }) => {
+const Circle = ({ fill, x, y, r, visible }) => {
 
-  const styles = getStyles(visible, mixBlendMode);
+  const styles = getStyles(visible);
 
   return (
     <g transform={ 'translate(' + x + ', ' + y + ')' }>

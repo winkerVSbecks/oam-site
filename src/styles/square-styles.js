@@ -29,7 +29,7 @@ const COLLAPSE = Radium.keyframes({
 
 });
 
-const getStyles = R.memoize((visible, mixBlendMode, s) => {
+const getStyles = R.memoize((visible, s) => {
 
   const EXPAND = expand(s);
   const animation = visible ? EXPAND : COLLAPSE;
@@ -41,7 +41,6 @@ const getStyles = R.memoize((visible, mixBlendMode, s) => {
   return {
     transformOrigin: origin,
     animation: `${animation} ${time}ms ${easing} forwards`,
-    mixBlendMode: mixBlendMode,
     opacity: 0.5
   };
 
