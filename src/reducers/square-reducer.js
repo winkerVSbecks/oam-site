@@ -1,5 +1,6 @@
-import { WINDOW_RESIZE, TOGGLE_SQUARE, CLEAR } from '../actions/constants';
-import { BLEND_FILTER, BASE } from './constants';
+import { WINDOW_RESIZE, TOGGLE_SQUARE, CLEAR, SET_PALETTE }
+  from '../actions/constants';
+import { PALETTE, BASE } from './constants';
 import * as R from 'ramda';
 import confused from '../assets/confused.mp3';
 import bounceDownSynth from '../assets/confused-reverse.mp3';
@@ -14,9 +15,8 @@ const initialState = {
   x: 0,
   y: 0,
   s: 0,
-  fill: '#0000FF',
-  visible: false,
-  mixBlendMode: BLEND_FILTER
+  fill: PALETTE.JAZZY.square,
+  visible: false
 };
 
 /**
@@ -45,6 +45,11 @@ export default function square(state = initialState, action) {
       }
 
       return R.merge(state, { visible });
+
+    case SET_PALETTE:
+      return R.merge(state, {
+        fill: PALETTE[action.palette].square
+      });
 
     default:
       return state;

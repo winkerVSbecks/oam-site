@@ -4,3 +4,4 @@ export const TOGGLE_SQUARE = 'TOGGLE_SQUARE';
 export const TOGGLE_CIRCLE = 'TOGGLE_CIRCLE';
 export const TOGGLE_LOADER = 'TOGGLE_LOADER';
 export const CLEAR = 'CLEAR';
+export const SET_PALETTE = 'SET_PALETTE';

@@ -5,9 +5,9 @@ import getStyles from '../styles/square-styles';
 /**
  * The Square
  */
-const Square = ({ fill, x, y, s, visible, mixBlendMode }) => {
+const Square = ({ fill, x, y, s, visible }) => {
 
-  const styles = getStyles(visible, mixBlendMode, s);
+  const styles = getStyles(visible, s);
 
   return (
     <g transform={ 'translate(' + x + ', ' + y + ')' }>

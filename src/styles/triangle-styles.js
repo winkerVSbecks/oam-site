@@ -1,11 +1,10 @@
 import Radium from 'radium';
 
-export function getTriangleStyles(visible, mixBlendMode) {
+export function getTriangleStyles(visible) {
 
   return {
     backfaceVisibility: 'hidden',
     perspective: 1000,
-    mixBlendMode: mixBlendMode,
     opacity: 0.5
   };
 

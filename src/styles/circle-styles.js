@@ -47,7 +47,7 @@ export const SWOOSH_REVERSE = Radium.keyframes({
   }
 }, 'jellyReverse');
 
-const getStyles = R.memoize((visible, mixBlendMode) => {
+const getStyles = R.memoize((visible) => {
   const animation = visible ? JELLY : SWOOSH_REVERSE;
   const easing = visible ? 'linear' : 'cubic-bezier(0, 0.79, 0, 1)';
   const time = visible ? '1500ms' : '200ms';
@@ -55,7 +55,6 @@ const getStyles = R.memoize((visible, mixBlendMode) => {
   return {
    backfaceVisibility: 'hidden',
    perspective: 1000,
-   mixBlendMode: mixBlendMode,
    animation: `${animation} ${time} ${easing} both`,
   };
 });

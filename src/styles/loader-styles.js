@@ -18,7 +18,7 @@ const MOVE = Radium.keyframes({
 
 });
 
-export function getStyles(visible, mixBlendMode, s) {
+export function getStyles(visible, s) {
 
   const animation = MOVE;
   const easing = 'cubic-bezier(0.4, 0, 0.2, 1)';
