@@ -26,6 +26,7 @@
     "eslint-plugin-react": "^2.3.0",
     "faucet": "0.0.1",
     "file-loader": "^0.8.4",
+    "gsap": "^1.18.2",
     "node-libs-browser": "^0.5.2",
     "onchange": "^2.0.0",
     "postcss-loader": "^0.5.1",

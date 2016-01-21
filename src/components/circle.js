@@ -10,7 +10,7 @@ const Circle = ({ fill, x, y, r, visible }) => {
   const styles = getStyles(visible);
 
   return (
-    <g transform={ 'translate(' + x + ', ' + y + ')' }>
+    <g style={{ transform: 'translate3d(' + x + 'px, ' + y + 'px, 0)' }}>
       <circle style={ styles }
         fill={ fill }
         opacity={ 0.5 }
