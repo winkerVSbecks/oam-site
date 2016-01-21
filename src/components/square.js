@@ -10,7 +10,7 @@ const Square = ({ fill, x, y, s, visible }) => {
   const styles = getStyles(visible, s);
 
   return (
-    <g transform={ 'translate(' + x + ', ' + y + ')' }>
+    <g style={{ transform: 'translate3d(' + x + 'px, ' + y + 'px, 0)' }}>
       <rect style={ styles }
         fill={ fill }
         x={ 0 }

@@ -8,18 +8,8 @@ import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
 const store = configureStore();
 
 ReactDOM.render(
-  <div>
-
-    <Provider store={ store }>
-      <App />
-    </Provider>
-
-    <DebugPanel top right bottom>
-      <DevTools store={ store }
-        monitor={ LogMonitor }
-        visibleOnLoad= { false } />
-    </DebugPanel>
-
-  </div>,
+  <Provider store={ store }>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );
