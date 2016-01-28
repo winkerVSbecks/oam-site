@@ -1,16 +1,8 @@
 import { WINDOW_RESIZE, TOGGLE_TRIANGLE, CLEAR, SET_PALETTE }
   from '../actions/constants';
 import { PALETTE, BASE } from './constants';
+import Sounds from '../audio';
 import * as R from 'ramda';
-import klang from '../assets/klang.mp3';
-import closeTheLid from '../assets/klang-reverse.mp3';
-
-const open = new Audio(klang);
-const close = new Audio(closeTheLid);
-const delay = R.test(/^google/, R.toLower(navigator.vendor)) ? 300 : 0;
-
-const isSafari = R.test(/^apple/, R.toLower(navigator.vendor));
-if (!isSafari) { close.playbackRate = 1.5; }
 
 const initialState = {
   x: 0,
@@ -22,7 +14,8 @@ const initialState = {
   ],
   r: 0,
   fill: PALETTE.JAZZY.triangle,
-  visible: false
+  visible: false,
+  sound: Sounds.JAZZY.triangle
 };
 
 /**
@@ -38,23 +31,18 @@ export default function triangle(state = initialState, action) {
       return R.merge(state, getTriangleVertices(action));
 
     case CLEAR:
-      setTimeout(() => close.play(), delay);
+      state.sound.play();
       return R.merge(state, { visible: false });
 
     case TOGGLE_TRIANGLE:
       const visible = !state.visible;
-
-      if (visible) {
-        open.play();
-      } else {
-        setTimeout(() => close.play(), delay);
-      }
-
+      state.sound.play();
       return R.merge(state, { visible });
 
     case SET_PALETTE:
       return R.merge(state, {
-        fill: PALETTE[action.palette].triangle
+        fill: PALETTE[action.palette].triangle,
+        sound: Sounds[action.palette].triangle
       });
 
     default:

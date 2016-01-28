@@ -14,7 +14,7 @@ const BG = ({ fill, w, h }) => {
   ].join(' ');
 
   return (
-    <path fill={ fill }
+    <path fill={ fill } style={{ transform: 'translate3d(0px, 0px, 0px)' }}
       d={ d } />
   );
 

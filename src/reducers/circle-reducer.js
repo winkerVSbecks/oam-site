@@ -1,23 +1,16 @@
 import { WINDOW_RESIZE, TOGGLE_CIRCLE, CLEAR, SET_PALETTE }
   from '../actions/constants';
 import { PALETTE, BASE } from './constants';
+import Sounds from '../audio';
 import * as R from 'ramda';
-
-import trampolineBounce from '../assets/trampoline-bounce.mp3';
-import quickReverse from '../assets/trampoline-bounce-reverse.mp3';
-
-const bounce = new Audio(trampolineBounce);
-const reverse = new Audio(quickReverse);
-
-const isSafari = R.test(/^apple/, R.toLower(navigator.vendor));
-if (!isSafari) { reverse.playbackRate = 3.0; }
 
 const initialState = {
   x: 0,
   y: 0,
   r: 0,
   fill: PALETTE.JAZZY.circle,
-  visible: false
+  visible: false,
+  sound: Sounds.JAZZY.circle
 };
 
 /**
@@ -33,23 +26,18 @@ export default function circle(state = initialState, action) {
       return R.merge(state, getCircleDef(action));
 
     case CLEAR:
-      reverse.play();
+      state.sound.play();
       return R.merge(state, { visible: false });
 
     case TOGGLE_CIRCLE:
       const visible = !state.visible;
-
-      if (visible) {
-        bounce.play();
-      } else {
-        reverse.play();
-      }
-
+      state.sound.play();
       return R.merge(state, { visible });
 
     case SET_PALETTE:
       return R.merge(state, {
-        fill: PALETTE[action.palette].circle
+        fill: PALETTE[action.palette].circle,
+        sound: Sounds[action.palette].circle
       });
 
     default:
