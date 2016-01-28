@@ -1,22 +1,16 @@
 import { WINDOW_RESIZE, TOGGLE_SQUARE, CLEAR, SET_PALETTE }
   from '../actions/constants';
 import { PALETTE, BASE } from './constants';
+import Sounds from '../audio';
 import * as R from 'ramda';
-import confused from '../assets/confused.mp3';
-import bounceDownSynth from '../assets/confused-reverse.mp3';
-
-const confuse = new Audio(confused);
-const bounce = new Audio(bounceDownSynth);
-
-const isSafari = R.test(/^apple/, R.toLower(navigator.vendor));
-if (!isSafari) { bounce.playbackRate = 1.5; }
 
 const initialState = {
   x: 0,
   y: 0,
   s: 0,
   fill: PALETTE.JAZZY.square,
-  visible: false
+  visible: false,
+  sound: Sounds.JAZZY.square
 };
 
 /**
@@ -32,23 +26,18 @@ export default function square(state = initialState, action) {
       return R.merge(state, getSquareDef(action));
 
     case CLEAR:
-      bounce.play();
+      state.sound.play();
       return R.merge(state, { visible: false });
 
     case TOGGLE_SQUARE:
       const visible = !state.visible;
-
-      if (visible) {
-        confuse.play();
-      } else {
-        bounce.play();
-      }
-
+      state.sound.play();
       return R.merge(state, { visible });
 
     case SET_PALETTE:
       return R.merge(state, {
-        fill: PALETTE[action.palette].square
+        fill: PALETTE[action.palette].square,
+        sound: Sounds[action.palette].square
       });
 
     default:

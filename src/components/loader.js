@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { getStyles } from '../styles/loader-styles';
 import Radium from 'radium';
 import * as R from 'ramda';
-import beaconOnMars from '../assets/beacon-on-mars.mp3';
+import beaconOnMars from '../audio/beacon-on-mars.mp3';
 
 const CP_MULTIPLIER = 0.512286623256592433;
 const loadTone = new Audio(beaconOnMars);
