@@ -9,7 +9,7 @@ const initialState = {
   y: 0,
   r: 0,
   fill: PALETTE.JAZZY.circle,
-  visible: false,
+  visible: true,
   sound: Sounds.JAZZY.circle
 };
 

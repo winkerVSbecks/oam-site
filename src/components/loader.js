@@ -1,6 +1,5 @@
 import React, { Component, classSet } from 'react';
 import ReactDOM from 'react-dom';
-import { getStyles } from '../styles/loader-styles';
 import Radium from 'radium';
 import * as R from 'ramda';
 import beaconOnMars from '../audio/beacon-on-mars.mp3';
@@ -11,7 +10,6 @@ const loadTone = new Audio(beaconOnMars);
 /**
  * Loading Animation
  */
-@Radium
 export default class Loader extends Component {
 
   // AnimationEnd
@@ -101,5 +99,36 @@ function buildWave(w, h, p) {
   const pathData = [...start, ...wave];
 
   return pathData.join(' ');
+
+}
+
+const MOVE = Radium.keyframes({
+
+  '0%': { 'stroke-dasharray': '0 500' },
+  '25%': {
+    'stroke-dasharray': '50 500',
+    'stroke-dashoffset': -50
+  },
+  '75%': {
+    'stroke-dasharray': '250 500',
+    'stroke-dashoffset': -250
+  },
+  '100%': {
+    'stroke-dasharray': '100 500',
+    'stroke-dashoffset': -500
+  }
+
+});
+
+export function getStyles(visible, s) {
+
+  const animation = MOVE;
+  const easing = 'cubic-bezier(0.4, 0, 0.2, 1)';
+  const time = 3;
+
+  return {
+    animation: `${animation} ${time}s ${easing}`,
+    strokeDasharray: '0 500'
+  };
 
 }

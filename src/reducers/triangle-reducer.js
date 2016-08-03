@@ -14,7 +14,7 @@ const initialState = {
   ],
   r: 0,
   fill: PALETTE.JAZZY.triangle,
-  visible: false,
+  visible: true,
   sound: Sounds.JAZZY.triangle
 };
 
