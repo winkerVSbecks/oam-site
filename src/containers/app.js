@@ -45,28 +45,19 @@ class App extends Component {
       }
     };
 
-    const loaderProps = R.merge(R.clone(this.props.loader), {
-      toggleLoader: this.props.toggleLoader,
-      toggleTriangle: this.props.toggleTriangle,
-      toggleSquare: this.props.toggleSquare,
-      toggleCircle: this.props.toggleCircle
-    });
-
     const colourSelectorProps = {
       setPalette: this.props.setPalette,
       width: this.props.core.windowWidth,
       palette: this.props.core.palette
     };
 
-    const content = !this.props.loader.didFinish ?
-      <Loader { ...loaderProps } /> :
-      (<div>
+    return (
+      <div>
         <ColourSelector { ...colourSelectorProps } />
         <Canvas { ...this.props } />
         <Toolbar { ...toolbarProps } />
-      </div>);
-
-    return content;
+      </div>
+    );
 
   }
 
