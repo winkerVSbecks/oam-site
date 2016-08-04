@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import TweenLite from 'gsap';
 import * as R from 'ramda';
+import tl, { t1, t2 } from '../styles/loading-timeline';
 
 const circleStyles = {
   backfaceVisibility: 'hidden',
@@ -12,6 +13,22 @@ const circleStyles = {
  * The Circle
  */
 class Circle extends Component {
+
+  componentDidMount() {
+    const { y, r } = this.props;
+
+    tl.fromTo(this._circle, t1, {
+      transformOrigin: '50% 50%',
+      transform: `translate3d(${-2.1*r}px, ${-y-2*r}px, 0px)`,
+    }, {
+      transform: `translate3d(${-2.1*r}px, 0px, 0px)`,
+      ease: Elastic.easeOut.config(1, 0.75),
+    }, 'phase-1')
+    .to(this._circle, t1, {
+      transform: `translate3d(0px, 0px, 0px)`,
+      ease: Expo.easeInOut,
+    }, 'phase-2');
+  }
 
   shouldComponentUpdate(nextProps) {
     return !R.equals(this.props, nextProps);

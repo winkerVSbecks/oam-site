@@ -1,24 +1,41 @@
-import React from 'react';
+import React, { Component } from 'react';
+import tl, { t3 } from '../styles/loading-timeline';
 
 /**
- * The Triangle in the background
+ * The rectangle in the background
  */
-const BG = ({ fill, w, h }) => {
+class BG extends Component {
 
-  const d = [
-    'M', w / 2, 0,
-    'H', w,
-    'V', h,
-    'H', w / 2,
-    'Z'
-  ].join(' ');
+  componentDidMount() {
+    tl.fromTo(this._rectangle, t3, {
+      transformOrigin: '100% 0',
+      transform: 'scaleX(0) translate3d(0px, 0px, 0px)',
+    }, {
+      transform: 'scaleX(1) translate3d(0px, 0px, 0px)',
+      ease: Expo.easeOut,
+    }, 'phase-3');
+  }
 
-  return (
-    <path fill={ fill } style={{ transform: 'translate3d(0px, 0px, 0px)' }}
-      d={ d } />
-  );
+  render() {
+    const { fill, w, h } = this.props;
 
-};
+    const d = [
+      'M', w / 2, 0,
+      'H', w,
+      'V', h,
+      'H', w / 2,
+      'Z'
+    ].join(' ');
+
+    return (
+      <path style={{ transform: 'scaleY(0) translate3d(0px, 0px, 0px)' }}
+        ref={ (c) => this._rectangle = c }
+        fill={ fill }
+        d={ d } />
+    );
+  }
+
+}
 
 
 export default BG;
