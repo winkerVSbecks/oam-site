@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import * as Actions from '../actions';
 import Canvas from '../components/canvas';
 import Toolbar from '../components/toolbar';
+import About from '../components/about';
 import ColourSelector from '../components/colour-selector';
 import * as R from 'ramda';
 
@@ -34,7 +35,7 @@ class App extends Component {
       toggleTriangle: this.props.toggleTriangle,
       toggleSquare: this.props.toggleSquare,
       toggleCircle: this.props.toggleCircle,
-      clear: this.props.clear,
+      toggleAbout: this.props.toggleAbout,
       width: this.props.core.windowWidth,
       fills: {
         triangle: this.props.triangle.fill,
@@ -54,6 +55,8 @@ class App extends Component {
         <ColourSelector { ...colourSelectorProps } />
         <Canvas { ...this.props } />
         <Toolbar { ...toolbarProps } />
+          <About toggleAbout={ this.props.toggleAbout }
+            isVisible={ this.props.core.aboutModalVisible } />
       </div>
     );
   }

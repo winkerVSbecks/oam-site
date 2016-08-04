@@ -1,4 +1,4 @@
-import { WINDOW_RESIZE, SET_PALETTE } from '../actions/constants';
+import { WINDOW_RESIZE, SET_PALETTE, TOGGLE_ABOUT } from '../actions/constants';
 import { BLEND_FILTER, PALETTE, BASE } from './constants';
 import Sounds from '../audio';
 import * as R from 'ramda';
@@ -8,7 +8,8 @@ const initialState = {
   height: 0,
   bgFill: PALETTE.JAZZY.bg,
   windowWidth: 0,
-  palette: 'JAZZY'
+  palette: 'JAZZY',
+  aboutModalVisible: false,
 };
 
 /**
@@ -33,6 +34,9 @@ export default function core(state = initialState, action) {
         palette: action.palette,
         bgFill: PALETTE[action.palette].bg
       });
+
+    case TOGGLE_ABOUT:
+      return R.merge(state, { aboutModalVisible: !state.aboutModalVisible });
 
     default:
       return state;
