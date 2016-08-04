@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TweenLite from 'gsap';
 import * as R from 'ramda';
+import tl, { t1, t2 } from '../styles/loading-timeline';
 
 const squareStyles = {
   opacity: 0.5,
@@ -12,12 +13,28 @@ const squareStyles = {
  */
 class Square extends Component {
 
+  componentDidMount() {
+    const { x, y, s } = this.props;
+
+    tl.fromTo(this._square, t1, {
+      transformOrigin: '50% 50%',
+      transform: `translate3d(${1.125*s}px, ${-y-s}px, 0px)`,
+    }, {
+      transform: `translate3d(${1.125*s}px, 0px, 0px)`,
+      ease: Elastic.easeOut.config(1, 0.75),
+    }, 'phase-1')
+    .to(this._square, t2, {
+      transform: `translate3d(0px, 0px, 0px)`,
+      ease: Expo.easeInOut,
+    }, 'phase-2');
+  }
+
   shouldComponentUpdate(nextProps) {
     return !R.equals(this.props, nextProps);
   }
 
   expand = () => {
-    const offset = this.props.s * 2 + 'px';
+    const offset = this.props.s * 2;
 
     new TimelineLite()
       .set(this._square, {
@@ -25,7 +42,7 @@ class Square extends Component {
         transform: `scaleY(0) translate3d(0, 0, 0)`,
       })
       .to(this._square, 0.5, {
-        transform: `scaleY(0.25) translate3d(0, ${ offset }, 0)`,
+        transform: `scaleY(0.25) translate3d(0, ${ offset }px, 0)`,
         ease: Power4.easeInOut,
       })
       .to(this._square, 0.4, {

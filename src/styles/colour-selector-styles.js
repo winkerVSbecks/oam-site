@@ -27,7 +27,7 @@ const base = (s) => ({
   cursor: 'pointer',
   width: s + 'vw',
   height: s + 'vw',
-  transition: 'all ease-in-out 300ms'
+  transition: 'width ease-in-out 300ms, height ease-in-out 300ms'
 });
 
 const squareStyles = (s) => R.merge(base(s), {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import * as R from 'ramda';
 import TweenLite from 'gsap';
+import tl, { t1} from '../styles/loading-timeline';
 
 const triangleStyles = {
   backfaceVisibility: 'hidden',
@@ -12,24 +13,40 @@ const triangleStyles = {
 /**
  * The Triangle
  */
-const Triangle = ({ fill, vertices, visible, x, y, r }) => {
-  const d = buildD(vertices);
+class Triangle extends Component {
+  componentDidMount() {
+    const { y, r } = this.props;
 
-  return (
-    <g style={{
-      transform: 'translate3d(' + x + 'px, ' + y + 'px, 0)'
-    }}>
-      <defs>
-        <Mask visible={ visible } r={ r }/>
-      </defs>
-      <path style={ triangleStyles }
-        fill={ fill }
-        d={ d }
-        clipPath="url(#circle-mask)" />
-    </g>
-  );
+    tl.fromTo(this._triangle, t1, {
+      transformOrigin: '50% 50%',
+      transform: `translate3d(0px, ${-y-r}px, 0px)`,
+    }, {
+      transform: `translate3d(0px, 0px, 0px)`,
+      ease: Elastic.easeOut.config(1, 0.75),
+    }, 'phase-1');
+  }
 
-};
+  render() {
+    const { fill, vertices, visible, x, y, r } = this.props;
+    const d = buildD(vertices);
+
+    return (
+      <g style={{
+        transform: 'translate3d(' + x + 'px, ' + y + 'px, 0)'
+      }}>
+        <defs>
+          <Mask visible={ visible } r={ r }/>
+        </defs>
+        <path ref={(c) => this._triangle = c}
+          style={ triangleStyles }
+          fill={ fill }
+          d={ d }
+          clipPath="url(#circle-mask)" />
+      </g>
+    );
+  };
+
+}
 
 export default Radium(Triangle);
 
@@ -56,7 +73,7 @@ class Mask extends Component {
 
   appear = () => {
     const dist = 3 * this.props.r;
-    TweenLite.fromTo(this._circle, 1, {
+    TweenLite.fromTo(this._circleMask, 1, {
       attr: { cx: dist, cy: dist }
     }, {
       attr: { cx: 0, cy: 0 },
@@ -66,7 +83,7 @@ class Mask extends Component {
 
   disappear = () => {
     const dist = 3 * this.props.r;
-    TweenLite.fromTo(this._circle, 0.6, {
+    TweenLite.fromTo(this._circleMask, 0.6, {
       attr: { cx: 0, cy: 0 }
     }, {
       attr: { cx: dist, cy: dist },
@@ -81,7 +98,7 @@ class Mask extends Component {
       <clipPath id="circle-mask">
         <circle r={ 1.5 * r }
           cx={ 0 } cy={ 0 }
-          ref={(c) => this._circle = c} />
+          ref={(c) => this._circleMask = c} />
       </clipPath>
     );
   }

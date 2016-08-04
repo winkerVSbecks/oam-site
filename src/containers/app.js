@@ -27,7 +27,6 @@ class App extends Component {
   }
 
   render() {
-
     const toolbarProps = {
       triangle: this.props.triangle.visible,
       square: this.props.square.visible,
@@ -57,7 +56,6 @@ class App extends Component {
         <Toolbar { ...toolbarProps } />
       </div>
     );
-
   }
 
 };

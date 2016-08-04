@@ -4,10 +4,10 @@ import Sounds from '../audio';
 import * as R from 'ramda';
 
 const initialState = {
-  width: 100,
-  height: 100,
+  width: 0,
+  height: 0,
   bgFill: PALETTE.JAZZY.bg,
-  windowWidth: 100,
+  windowWidth: 0,
   palette: 'JAZZY'
 };
 
