@@ -1,4 +1,4 @@
-import { WINDOW_RESIZE, TOGGLE_SQUARE, CLEAR, SET_PALETTE }
+import { WINDOW_RESIZE, TOGGLE_SQUARE, SET_PALETTE }
   from '../actions/constants';
 import { PALETTE, BASE } from './constants';
 import Sounds from '../audio';
@@ -24,10 +24,6 @@ export default function square(state = initialState, action) {
 
     case WINDOW_RESIZE:
       return R.merge(state, getSquareDef(action));
-
-    case CLEAR:
-      state.sound.play();
-      return R.merge(state, { visible: false });
 
     case TOGGLE_SQUARE:
       const visible = !state.visible;

@@ -1,4 +1,4 @@
-import { WINDOW_RESIZE, TOGGLE_TRIANGLE, CLEAR, SET_PALETTE }
+import { WINDOW_RESIZE, TOGGLE_TRIANGLE, SET_PALETTE }
   from '../actions/constants';
 import { PALETTE, BASE } from './constants';
 import Sounds from '../audio';
@@ -29,10 +29,6 @@ export default function triangle(state = initialState, action) {
 
     case WINDOW_RESIZE:
       return R.merge(state, getTriangleVertices(action));
-
-    case CLEAR:
-      state.sound.play();
-      return R.merge(state, { visible: false });
 
     case TOGGLE_TRIANGLE:
       const visible = !state.visible;

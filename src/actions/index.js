@@ -1,5 +1,5 @@
 import { WINDOW_RESIZE, TOGGLE_TRIANGLE, TOGGLE_SQUARE, TOGGLE_CIRCLE,
-  TOGGLE_LOADER, CLEAR, SET_PALETTE } from '../actions/constants';
+  TOGGLE_LOADER, TOGGLE_ABOUT, SET_PALETTE } from '../actions/constants';
 
 export function windowResize({ width, height }) {
 
@@ -27,8 +27,8 @@ export let toggleSquare = () => toggleShape(TOGGLE_SQUARE);
 export let toggleCircle = () => toggleShape(TOGGLE_CIRCLE);
 export let toggleLoader = () => toggleShape(TOGGLE_LOADER);
 
-export function clear() {
-  return { type: CLEAR };
+export function toggleAbout() {
+  return { type: TOGGLE_ABOUT };
 }
 
 export function setPalette(palette) {

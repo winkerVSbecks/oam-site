@@ -1,4 +1,4 @@
-import { WINDOW_RESIZE, TOGGLE_CIRCLE, CLEAR, SET_PALETTE }
+import { WINDOW_RESIZE, TOGGLE_CIRCLE, SET_PALETTE }
   from '../actions/constants';
 import { PALETTE, BASE } from './constants';
 import Sounds from '../audio';
@@ -24,10 +24,6 @@ export default function circle(state = initialState, action) {
 
     case WINDOW_RESIZE:
       return R.merge(state, getCircleDef(action));
-
-    case CLEAR:
-      state.sound.play();
-      return R.merge(state, { visible: false });
 
     case TOGGLE_CIRCLE:
       const visible = !state.visible;
