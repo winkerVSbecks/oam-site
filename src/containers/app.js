@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import * as Actions from '../actions';
 import Canvas from '../components/canvas';
 import Toolbar from '../components/toolbar';
-import Loader from '../components/loader';
 import ColourSelector from '../components/colour-selector';
 import * as R from 'ramda';
 
