@@ -57,16 +57,18 @@ const squareStyles = (s, square, fill) => R.merge(base(s), {
   marginRight: '0.75rem'
 });
 
-const aboutButtonStyles = (s, square) => ({
-  cursor: 'pointer',
-  width: 2 * s + 'vw',
-  height: s + 'vw',
-  transition: 'width ease-in-out 300ms, height ease-in-out 300ms',
-  letterSpacing: '0.05em',
-  textAnchor: 'middle',
-  fontSize: '10',
-  fill: '#fff',
-});
+const aboutButtonStyles = (s, width) => {
+  return {
+    cursor: 'pointer',
+    width: (width < 400 ? s : 2 * s) + 'vw',
+    height: s + 'vw',
+    transition: 'width ease-in-out 300ms, height ease-in-out 300ms',
+    letterSpacing: '0.05em',
+    textAnchor: 'middle',
+    fontSize: width < 400 ? 5 : 10,
+    fill: '#fff',
+  };
+};
 
 const containerStyles = (s, width) => ({
   margin: width < 550 ? '0 auto' : 0

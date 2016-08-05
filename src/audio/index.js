@@ -1,3 +1,5 @@
+import { Howl } from 'howler';
+
 import oam1 from '../audio/OAM_1.mp3';
 import oam1Circ from '../audio/OAM_1_circ.mp3';
 import oam1Sq from '../audio/OAM_1_sq.mp3';
@@ -18,31 +20,30 @@ import oam4Circ from '../audio/OAM_4_circ.mp3';
 import oam4Sq from '../audio/OAM_4_sq.mp3';
 import oam4Tri from '../audio/OAM_4_tri.mp3';
 
-
 const Sounds = {
   JAZZY: {
-    base: new Audio(oam1),
-    circle: new Audio(oam1Circ),
-    triangle: new Audio(oam1Sq),
-    square: new Audio(oam1Tri)
+    base: new Howl({ src: [oam1] }),
+    circle: new Howl({ src: [oam1Circ] }),
+    triangle: new Howl({ src: [oam1Sq] }),
+    square: new Howl({ src: [oam1Tri] })
   },
   AWAKE: {
-    base: new Audio(oam2),
-    circle: new Audio(oam2Circ),
-    triangle: new Audio(oam2Sq),
-    square: new Audio(oam2Tri)
+    base: new Howl({ src: [oam2] }),
+    circle: new Howl({ src: [oam2Circ] }),
+    triangle: new Howl({ src: [oam2Sq] }),
+    square: new Howl({ src: [oam2Tri] })
   },
   SLEEPY: {
-    base: new Audio(oam3),
-    circle: new Audio(oam3Circ),
-    triangle: new Audio(oam3Sq),
-    square: new Audio(oam3Tri)
+    base: new Howl({ src: [oam3] }),
+    circle: new Howl({ src: [oam3Circ] }),
+    triangle: new Howl({ src: [oam3Sq] }),
+    square: new Howl({ src: [oam3Tri] })
   },
   ZEN: {
-    base: new Audio(oam4),
-    circle: new Audio(oam4Circ),
-    triangle: new Audio(oam4Sq),
-    square: new Audio(oam4Tri)
+    base: new Howl({ src: [oam4] }),
+    circle: new Howl({ src: [oam4Circ] }),
+    triangle: new Howl({ src: [oam4Sq] }),
+    square: new Howl({ src: [oam4Tri] })
   }
 };
 
