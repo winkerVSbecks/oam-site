@@ -17,7 +17,8 @@ class Toolbar extends Component {
   render() {
     const { toggleTriangle, toggleSquare, toggleCircle, toggleAbout } = this.props;
     const { toolbarStyles, containerStyles, circleStyles,
-      triangleStyles, squareStyles, aboutButtonStyles } = getStyles(this.props);
+      triangleStyles, squareStyles, aboutButtonStyles,
+      width } = getStyles(this.props);
 
     return (
       <div className="absolute bottom-0 left-0 flex py2 col-12 border-box"
@@ -45,7 +46,7 @@ class Toolbar extends Component {
 
           <div style={ aboutButtonStyles }
             onClick={ toggleAbout }>
-            <svg viewBox="0 0 20 20"
+            <svg viewBox={ width < 400 ? '0 0 40 20' : '0 0 20 20' }
               ref="toggleAbout">
               <text x="10" y="13">
                 About

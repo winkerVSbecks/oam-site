@@ -1,30 +1,27 @@
 import React, { Component } from 'react';
-
-const styles = {
-  container: {
-    backgroundColor: '#00ffff',
-  },
-}
+import Radium from 'radium';
 
 function About({ toggleAbout, isVisible }) {
-  const position = isVisible ? 'top-0' : 'top-100';
-  const visibility = isVisible ? '' : 'hide';
+  const position = isVisible ? { transform: 'translate3d(0, 0, 0)' } :
+                               { transform: 'translate3d(0, 100%, 0)' };
+
+  const styles = Object.assign({}, { backgroundColor: '#00ffff' }, position);
 
   return (
-    <div className={ `fixed ${position} left-0 vh-100 vw-100 white flex flex-center an-all` }
-      style={ styles.container }>
+    <div className={ `fixed left-0 top-0 right-0 bottom-0 white flex flex-center an-all` }
+      style={ styles }>
       <div className="center px2 mx-auto">
         <svg viewBox="0 0 20 20"
           width="124px" height="124px"
-          className="mb3"
+          className="not-sm-mb3"
           fill="#fff">
           <circle cx="10" cy="10" r="10" opacity="0.5" />
           <rect x="0" y="0" width="20" height="20" opacity="0.5" />
           <path d="M 10,0 L 20,20 L 0,20 Z" opacity={ 0.5 } />
         </svg>
 
-        <p className="h2 mb4">OAM is an experiment<br className="sm-show md-show lg-show" />in mixing sound, colours, and geometries<br className="sm-show md-show lg-show" />on the web.</p>
-        <p className="h3">Brought to you by <a className="link" href="http://ainsleywagoner.com/">Ainsley</a> &amp; <a className="link" href="http://varun.ca/">Varun</a></p>
+        <p className="h2 not-sm-mb4">OAM is an experiment<br className="sm-show md-show lg-show" />in mixing sound, colours, and geometries<br className="sm-show md-show lg-show" />on the web.</p>
+        <p className="h3 m0">Brought to you by <a className="link" href="http://ainsleywagoner.com/">Ainsley</a> &amp; <a className="link" href="http://varun.ca/">Varun</a></p>
       </div>
 
       <div className="absolute top-0 right-0 m2 pointer"
@@ -42,4 +39,4 @@ function About({ toggleAbout, isVisible }) {
   );
 }
 
-export default About;
+export default Radium(About);
