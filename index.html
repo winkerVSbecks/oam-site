@@ -1,29 +1,51 @@
 <html>
   <head>
     <title>OAM Site</title>
-    <meta title="description" content="A simple shape-drawing web interface that is meant to be delightful and use colours that are not otherwise functional on the internet. It is novel, pretty, fun, pointless.">
+    <meta name="description" content="OAM is an experiment in mixing sound, colours, and geometries on the web.">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="apple-touch-icon" sizes="57x57" href="img/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="img/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="img/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="img/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="img/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="img/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-    <link rel="manifest" href="img/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="img/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
+    <!-- Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://example.com/image.jpg">
+    <meta property="og:description" content="OAM is an experiment in mixing sound, colours, and geometries on the web.">
+    <meta property="og:site_name" content="OAM">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@winkerVSbecks">
+    <meta name="twitter:creator" content="@ainsleywagon">
+    <meta name="twitter:url" content="https://example.com/page.html">
+    <meta name="twitter:title" content="OAM">
+    <meta name="twitter:description" content="OAM is an experiment in mixing sound, colours, and geometries on the web.">
+    <meta name="twitter:image" content="https://example.com/image.jpg">
+    <!-- Google -->
+    <meta itemprop="name" content="OAM">
+    <meta itemprop="description" content="OAM is an experiment in mixing sound, colours, and geometries on the web.">
+    <meta itemprop="image" content="https://example.com/image.jpg">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="favicon-152.png">
+    <meta name="msapplication-TileColor" content="#F81465">
+    <meta name="msapplication-TileImage" content="favicon-144.png">
+    <meta name="application-name" content="OAM">
+    <meta name="msapplication-tooltip" content="OAM">
+    <meta name="msapplication-config" content="ieconfig.xml">
+    <link rel="icon" href="favicon-32.png" sizes="32x32">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
   </head>
   <body style="overflow: hidden;">
     <div id="root"></div>
     <script src="bundle.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-82054497-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
   </body>
 </html>

@@ -2,7 +2,7 @@
   "name": "oam-site",
   "version": "1.0.0",
   "scripts": {
-    "build": "webpack --config webpack.build.js --bail -p && cp index.html build",
+    "build": "webpack --config webpack.build.js --bail -p && cp index.html build && cp CNAME build && cp -r img/* build",
     "deploy": "bash deploy.sh",
     "lint": "eslint src",
     "start": "node server.js",
@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "browserify": "12.0.1",
+    "howler": "2.0.0",
     "radium": "0.15.3",
     "react": "0.14.0",
     "react-dom": "0.14.0"

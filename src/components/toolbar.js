@@ -45,9 +45,9 @@ class Toolbar extends Component {
 
           <div style={ aboutButtonStyles }
             onClick={ toggleAbout }>
-            <svg viewBox="0 0 40 20"
+            <svg viewBox="0 0 20 20"
               ref="toggleAbout">
-              <text x="20" y="13">
+              <text x="10" y="13">
                 About
               </text>
             </svg>

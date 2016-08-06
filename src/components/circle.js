@@ -19,9 +19,9 @@ class Circle extends Component {
 
     tl.fromTo(this._circle, t1, {
       transformOrigin: '50% 50%',
-      transform: `translate3d(${-2.1*r}px, ${-y-2*r}px, 0px)`,
+      transform: `translate3d(${-2.5*r}px, ${-y-2*r}px, 0px)`,
     }, {
-      transform: `translate3d(${-2.1*r}px, 0px, 0px)`,
+      transform: `translate3d(${-2.5*r}px, 0px, 0px)`,
       ease: Elastic.easeOut.config(1, 0.75),
     }, 'phase-1')
     .to(this._circle, t1, {
