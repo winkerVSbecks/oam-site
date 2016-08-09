@@ -37,3 +37,19 @@ export function setPalette(palette) {
     palette
   };
 }
+
+const keyMap = {
+  a: toggleCircle,
+  s: toggleTriangle,
+  d: toggleSquare,
+  u: () => setPalette('JAZZY'),
+  i: () => setPalette('AWAKE'),
+  o: () => setPalette('SLEEPY'),
+  p: () => setPalette('ZEN'),
+};
+
+export function triggerKeyboardEvents(e) {
+  const key = e.key.toLowerCase();
+  const action = keyMap[key];
+  return action ? action() : {};
+}
